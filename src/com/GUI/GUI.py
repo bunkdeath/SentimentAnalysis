@@ -21,14 +21,14 @@ from PySide import QtDeclarative
 import sys
 
 class GUI:
-    def __init__(self):
+    def __init__(self, crawl_tweets):
 #        app = QApplication(sys.argv)
-
         self.path = os.path.dirname(__file__)
         dummy = os.path.join(self.path, "qml")
         self.main_qml = os.path.join(dummy, "focus.qml")
 
         controller = Controller()
+        controller.set_crawl_tweet(crawl_tweets)
         things = [ThingWrapper(thing) for thing in []]
 
 #        self.modelling = TwitterFeedListModelling()

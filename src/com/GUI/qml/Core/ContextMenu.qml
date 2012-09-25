@@ -29,7 +29,8 @@ FocusScope {
                     Input{
                         id: fromIn
                         KeyNavigation.backtab: searchbutton
-                        onAccepted:searchbutton.doSearch();
+                        onAccepted: controller.output(fromIn.text);
+                        //onAccepted: searchbutton.doSearch();
                         focus: true
                     }
                 }

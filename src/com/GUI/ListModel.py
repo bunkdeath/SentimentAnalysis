@@ -124,9 +124,18 @@ class ThingListModel(QtCore.QAbstractListModel):
 #        self.reset()
 
 class Controller(QtCore.QObject):
+    def set_crawl_tweet(self, crawl_tweets):
+        self.crawl_tweets = crawl_tweets
+
     @QtCore.Slot(QtCore.QObject)
     def thingSelected(self, wrapper):
         print 'Tweet : ', wrapper._thing.tweet
+
+    @QtCore.Slot(str)
+    @QtCore.Slot('double')
+    def output(self, s):
+        self.crawl_tweets.set_keyword(s)
+	self.crawl_tweets.start()
 
 
 class Person(object):

@@ -78,15 +78,15 @@ class AnalyseTweet(threading.Thread):
 
 def main():
     app = QApplication(sys.argv)
-    
-    gui = GUI()
 
     queue = Queue.Queue()
 
     t1 = CrawlTweets(queue)
+    gui = GUI(t1)
     t2 = AnalyseTweet(queue, gui)
 
-    t1.start()
+    
+#    t1.start()
     t2.start()
 
     sys.exit(app.exec_())

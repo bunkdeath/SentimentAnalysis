@@ -14,8 +14,7 @@ class CrawlTweets(threading.Thread):
         self.PASS = "i1a4ukya1543"
         self.pf = {}
 
-    def search(self, keyword):
-        self.pf['track'] = keyword
+    def search(self):
 
         c = pycurl.Curl()
         c.setopt(pycurl.USERPWD, "%s:%s" % (self.USER, self.PASS))
@@ -32,5 +31,8 @@ class CrawlTweets(threading.Thread):
     def on_recieve(self, data):
         self.queue.put(data)
 
+    def set_keyword(self, keyword):
+        self.pf['track'] = keyword
+
     def run(self):
-        self.search("tennis")
+        self.search()
