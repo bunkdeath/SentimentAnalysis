@@ -11,7 +11,7 @@ class CrawlTweets(threading.Thread):
         threading.Thread.__init__(self)
         self.queue = queue
         self.USER = "bunkdeath"
-        self.PASS = "i1a4ukya1543"
+        self.PASS = "*******"
         self.pf = {}
 
     def search(self):
