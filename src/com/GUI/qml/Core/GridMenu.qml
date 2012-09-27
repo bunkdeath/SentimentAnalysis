@@ -1,3 +1,4 @@
+import Charts 1.0
 import Qt 4.7
 
 FocusScope {
@@ -18,10 +19,10 @@ FocusScope {
 
         GridView {
             id: gridView
-            anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 20
-            cellWidth: 152; cellHeight: 152
+            anchors.fill: parent; anchors.leftMargin: 20; anchors.rightMargin: 20; anchors.topMargin: 50;
+            cellWidth: 300; cellHeight: 300
             focus: true
-            model: 3
+            model: PieModel{}
 
             KeyNavigation.down: listMenu
             KeyNavigation.left: contextMenu
@@ -30,7 +31,38 @@ FocusScope {
                 id: container
                 width: GridView.view.cellWidth; height: GridView.view.cellHeight
 
-                Rectangle {
+                Piechart{
+                    id: pie
+                }
+/*
+Item {
+    width: 300; height: 200
+
+    PieChart {
+        anchors.centerIn: parent
+        width: 200; height: 200
+
+        slices: [
+            PieSlice {
+                anchors.fill: parent
+                color: "red"
+                fromAngle: 0; angleSpan: 120
+            },
+            PieSlice {
+                anchors.fill: parent
+                color: "green"
+                fromAngle: 120; angleSpan: 120
+            },
+            PieSlice {
+                anchors.fill: parent
+                color: "blue"
+                fromAngle: 240; angleSpan: 120
+            }
+        ]
+    }
+}
+*/
+                /*Rectangle {
                     id: content
                     color: "transparent"
                     smooth: true
@@ -38,7 +70,7 @@ FocusScope {
 
                     Rectangle { color: "#91AA9D"; anchors.fill: parent; anchors.margins: 3; radius: 8; smooth: true }
                     Image { source: "images/qt.png"; anchors.centerIn: parent; smooth: true }
-                }
+                }*/
 
                 MouseArea {
                     id: mouseArea
@@ -56,7 +88,7 @@ FocusScope {
 
                 states: State {
                     name: "active"; when: container.activeFocus
-                    PropertyChanges { target: content; color: "#FCFFF5"; scale: 1.1 }
+                    PropertyChanges { target: pie; color: "#FCFFF5"; scale: 1.1 }
                 }
 
                 transitions: Transition {

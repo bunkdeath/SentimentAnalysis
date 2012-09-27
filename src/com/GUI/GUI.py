@@ -18,6 +18,9 @@ from PySide.QtCore import *
 from PySide.QtGui import *
 from PySide import QtOpenGL
 from PySide import QtDeclarative
+
+from com.GUI.Pie import *
+
 import sys
 
 class GUI:
@@ -33,7 +36,8 @@ class GUI:
 
 #        self.modelling = TwitterFeedListModelling()
 #        self.view = self.modelling.model()
-
+        qmlRegisterType(PieChart, 'Charts', 1, 0, 'PieChart');
+        qmlRegisterType(PieSlice, "Charts", 1, 0, "PieSlice");
 
         self.view = QtDeclarative.QDeclarativeView()
         self.glw = QtOpenGL.QGLWidget()
